@@ -3,8 +3,8 @@ $(function () {
     $("#resultado").hide();
     $("#aguarde").hide();
 
-    $("#datetimepicker1").datetimepicker({format: 'DD/mm/YYYY'});
-    $("#datetimepicker2").datetimepicker({format: 'DD/mm/YYYY'});
+    $("#datetimepicker1").datetimepicker();
+    $("#datetimepicker2").datetimepicker();
 });
 function verCotacao(){
 
