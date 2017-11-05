@@ -1,7 +1,10 @@
 $(function () {
-    $('#datetimepicker1').datetimepicker();
-    $('#datetimepicker2').datetimepicker();
     $('#valorInvestido').maskMoney();
+    $("#resultado").hide();
+    $("#aguarde").hide();
+
+    $("#datetimepicker1").datetimepicker();
+    $("#datetimepicker2").datetimepicker();
 });
 function verCotacao(){
 
@@ -14,14 +17,15 @@ function verCotacao(){
         return;
     }
 
-
+    $("#aguarde").show();
     $.get("https://api.coindesk.com/v1/bpi/historical/close.json?start="+dtinicial+"&end="+dtFinal,function(data){
 
         $.get("https://api.fixer.io/"+dtinicial+"?base=USD", function(dolarInicial){
-            console.log(dolarInicial.rates["BRL"]);
+            
 
             $.get("https://api.fixer.io/"+dtFinal+"?base=USD", function(dolarFinal){
-
+                $("#resultado").show();
+                $("#aguarde").hide();
                 var dados = JSON.parse(data);
                 var bpi = dados.bpi;
                 var bpiString = JSON.stringify(bpi);
